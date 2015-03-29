@@ -1,0 +1,44 @@
+Wei Ding
+Jonathan Liou
+
+1. Assuming optimal route is the one with the lowest path cost, the routes found by the five search algorithms are:
+
+---------------Test breadth function------------------------
+Ann Arbor->Brighton->Pontiac->Romeo->  
+Location: Romeo	path cost: 81.1	Strait-Line distance: 0
+----------------Test depth function-----------------------
+Ann Arbor->Brighton->Farmington Hills->Royal Oak->Pontiac->Sterling Heights->Romeo->  
+Location: Romeo	path cost: 104.5	Strait-Line distance: 0
+----------------------Uniform cost function---------------
+Ann Arbor->Plymouth->Farmington Hills->Pontiac->Romeo->  
+Location: Romeo	path cost: 74.5	Strait-Line distance: 0
+--------------------Test greedy search function------------
+Ann Arbor->Plymouth->Farmington Hills->Pontiac->Romeo->  
+Location: Romeo	path cost: 74.5	Strait-Line distance: 0
+----------------------A star function---------------------
+Ann Arbor->Plymouth->Farmington Hills->Pontiac->Romeo->  
+Location: Romeo	path cost: 74.5	Strait-Line distance: 0
+
+Optimal route was found by uniform cost search, greedy search, and A* search.  Suboptimal routes were found by breadth first and depth first search.  
+
+In the searches that returned the optimal route, the fringe queues were ordered based on desirability as summarized by a particular metric (for uniform cost, total path cost so far; for greedy search, distance from the destination city; for A* search, the sum of total path cost and distance from the destination city), and thus were not dependent on what order the transitions were defined as long as all possible transitions (from node expansion) were found.  This is not so for breadth first and depth first search, where the fringe queues were built as transitions were discovered and a measure of optimality was not used to order the nodes based on desirability.
+
+2. 
+
+---------------Test breadth function------------------------
+Ann Arbor->Brighton->Pontiac->Romeo->  
+Location: Romeo	path cost: 81.1	Strait-Line distance: 0
+----------------Test depth function-----------------------
+Ann Arbor->Plymouth->Romulus->Detroit->Farmington Hills->Brighton->Pontiac->Sterling Heights->Romeo->  
+Location: Romeo	path cost: 181.3	Strait-Line distance: 0
+----------------------Uniform cost function---------------
+Ann Arbor->Plymouth->Farmington Hills->Pontiac->Romeo->  
+Location: Romeo	path cost: 74.5	Strait-Line distance: 0
+--------------------Test greedy search function------------
+Ann Arbor->Plymouth->Farmington Hills->Pontiac->Romeo->  
+Location: Romeo	path cost: 74.5	Strait-Line distance: 0
+----------------------A star function---------------------
+Ann Arbor->Plymouth->Farmington Hills->Pontiac->Romeo->  
+Location: Romeo	path cost: 74.5	Strait-Line distance: 0
+
+Depth first search results were different after transition order was reversed.  Because the fringe queue for depth first search is not ordered based on desirability, the fringe queue is highly dependent on the order in which the transitions were found and added to the fringe queue.  Given the graph transitions, it is possible to find a path to Romeo from any of the nodes adjacent to Ann Arbor, and so depth first returned a different path because expansion was performed from different nodes.
